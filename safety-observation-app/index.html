@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Safety Observation Reporting</title>
+  <meta name="description" content="Record positive or negative safety observations with photo capture.">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>Safety Observations</h1>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2 class="section-title">New Observation</h2>
+      <form id="observationForm" autocomplete="off">
+        <label class="label" for="title">Title</label>
+        <input id="title" name="title" class="input" type="text" placeholder="e.g., Clear walkway" required>
+
+        <label class="label" for="description">Description</label>
+        <textarea id="description" name="description" class="textarea" rows="4" placeholder="Describe what you observed..."></textarea>
+
+        <fieldset class="fieldset">
+          <legend class="label">Rating</legend>
+          <div class="radio-group">
+            <label class="radio">
+              <input type="radio" name="rating" value="positive" checked>
+              <span>Positive</span>
+            </label>
+            <label class="radio">
+              <input type="radio" name="rating" value="negative">
+              <span>Negative</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <label class="label" for="photo">Photo (optional)</label>
+        <input id="photo" name="photo" class="file" type="file" accept="image/*" capture="environment">
+        <div id="photoPreviewWrapper" class="photo-preview hidden">
+          <img id="photoPreview" alt="Photo preview">
+          <button type="button" id="removePhotoBtn" class="btn btn-secondary btn-inline">Remove Photo</button>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Save Observation</button>
+      </form>
+    </section>
+
+    <section class="toolbar">
+      <div class="filters">
+        <label for="filterSelect" class="label">Filter</label>
+        <select id="filterSelect" class="select">
+          <option value="all" selected>All</option>
+          <option value="positive">Positive</option>
+          <option value="negative">Negative</option>
+        </select>
+      </div>
+      <div class="actions">
+        <button id="exportBtn" class="btn btn-secondary">Export JSON</button>
+        <label class="btn btn-secondary" for="importFile">Import JSON</label>
+        <input id="importFile" type="file" accept="application/json" class="hidden">
+        <button id="clearBtn" class="btn btn-danger">Clear All</button>
+      </div>
+    </section>
+
+    <section class="stats" id="stats"></section>
+
+    <section class="list card">
+      <h2 class="section-title">Observations</h2>
+      <ul id="observationList" class="observation-list"></ul>
+      <p id="emptyState" class="empty">No observations yet. Add your first one above.</p>
+    </section>
+  </main>
+
+  <footer class="app-footer">Made for quick on-site safety reporting</footer>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
