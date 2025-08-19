@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weather Now</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="Current weather for your location using Open‑Meteo.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%8C%A1%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+  <div id="app">
+    <header class="app-header">
+      <h1>Weather Now</h1>
+      <button id="refreshBtn" class="icon-btn" title="Refresh" aria-label="Refresh weather">↻</button>
+    </header>
+
+    <main>
+      <section class="card" aria-live="polite" aria-busy="true">
+        <div class="location-row">
+          <div class="location" id="location">Detecting location…</div>
+        </div>
+
+        <div class="temp-row">
+          <div class="icon" id="icon" aria-hidden="true">⛅</div>
+          <div class="temp-values">
+            <div class="temperature" id="temperature">--°</div>
+            <div class="conditions" id="conditions">—</div>
+          </div>
+        </div>
+
+        <ul class="meta">
+          <li><span>Feels like</span> <strong id="apparent">—</strong></li>
+          <li><span>Wind</span> <strong id="wind">—</strong></li>
+          <li><span>Humidity</span> <strong id="humidity">—</strong></li>
+          <li><span>Updated</span> <strong id="updated">—</strong></li>
+        </ul>
+
+        <div class="hint">Enable location permissions if prompted. Works over HTTPS or on localhost.</div>
+      </section>
+
+      <section class="error" id="error" hidden></section>
+    </main>
+
+    <footer>
+      Data by <a href="https://open-meteo.com/" target="_blank" rel="noreferrer noopener">Open‑Meteo</a>
+    </footer>
+  </div>
+
+  <script type="module" src="script.js"></script>
+  
+  <noscript>
+    JavaScript is required to use this app.
+  </noscript>
+</body>
+</html>
+
